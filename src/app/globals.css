@@ -1,0 +1,162 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --radius: 0.875rem;
+  /* Light: Aurora Light */
+  --background: oklch(0.985 0.005 250);
+  --foreground: oklch(0.22 0.04 260);
+  --card: oklch(1 0 0 / 70%);
+  --card-foreground: oklch(0.22 0.04 260);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.22 0.04 260);
+  --primary: oklch(0.62 0.18 280);
+  --primary-foreground: oklch(0.99 0 0);
+  --secondary: oklch(0.78 0.1 285);
+  --secondary-foreground: oklch(0.22 0.04 260);
+  --muted: oklch(0.95 0.01 250);
+  --muted-foreground: oklch(0.45 0.03 260);
+  --accent: oklch(0.72 0.15 250);
+  --accent-foreground: oklch(0.22 0.04 260);
+  --destructive: oklch(0.6 0.22 25);
+  --destructive-foreground: oklch(0.99 0 0);
+  --border: oklch(0.85 0.02 270 / 60%);
+  --input: oklch(0.9 0.02 270);
+  --ring: oklch(0.62 0.18 280);
+  --neon: oklch(0.72 0.18 240);
+  --indigo-glow: oklch(0.65 0.2 275);
+  --purple-glow: oklch(0.62 0.22 300);
+  --gradient-primary: linear-gradient(135deg, oklch(0.62 0.18 280), oklch(0.72 0.18 240));
+  --gradient-glow: radial-gradient(circle at 50% 50%, oklch(0.72 0.18 280 / 0.5), transparent 70%);
+  --shadow-glow: 0 0 40px oklch(0.62 0.18 280 / 0.35);
+  --shadow-neon: 0 0 30px oklch(0.72 0.18 240 / 0.4);
+}
+
+.dark {
+  /* Dark: Indigo NeonVerse */
+  --background: oklch(0.13 0.04 270);
+  --foreground: oklch(0.98 0.005 250);
+  --card: oklch(0.2 0.05 275 / 40%);
+  --card-foreground: oklch(0.98 0.005 250);
+  --popover: oklch(0.16 0.05 275);
+  --popover-foreground: oklch(0.98 0.005 250);
+  --primary: oklch(0.6 0.22 285);
+  --primary-foreground: oklch(0.99 0 0);
+  --secondary: oklch(0.3 0.1 280);
+  --secondary-foreground: oklch(0.98 0.005 250);
+  --muted: oklch(0.22 0.05 275);
+  --muted-foreground: oklch(0.72 0.04 260);
+  --accent: oklch(0.7 0.2 235);
+  --accent-foreground: oklch(0.13 0.04 270);
+  --destructive: oklch(0.65 0.24 25);
+  --destructive-foreground: oklch(0.99 0 0);
+  --border: oklch(0.6 0.18 280 / 25%);
+  --input: oklch(0.3 0.08 275 / 40%);
+  --ring: oklch(0.6 0.22 285);
+  --neon: oklch(0.78 0.18 235);
+  --indigo-glow: oklch(0.6 0.22 285);
+  --purple-glow: oklch(0.6 0.24 305);
+  --gradient-primary: linear-gradient(135deg, oklch(0.6 0.22 285), oklch(0.78 0.18 235));
+  --gradient-glow: radial-gradient(circle at 50% 50%, oklch(0.6 0.22 285 / 0.55), transparent 70%);
+  --shadow-glow: 0 0 60px oklch(0.6 0.22 285 / 0.55);
+  --shadow-neon: 0 0 40px oklch(0.78 0.18 235 / 0.5);
+}
+
+@layer base {
+  * {
+    border-color: var(--border);
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+    overflow-x: hidden;
+  }
+}
+
+@layer utilities {
+  .glass {
+    background: color-mix(in oklab, var(--card) 70%, transparent);
+    backdrop-filter: blur(16px) saturate(140%);
+    -webkit-backdrop-filter: blur(16px) saturate(140%);
+    border: 1px solid var(--border);
+  }
+
+  .gradient-text {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .glow-border {
+    position: relative;
+  }
+
+  .glow-card {
+    box-shadow: var(--shadow-glow);
+  }
+
+  .neon-glow {
+    box-shadow: var(--shadow-neon);
+  }
+
+  .bg-grid {
+    background-image:
+      linear-gradient(to right, color-mix(in oklab, var(--primary) 18%, transparent) 1px, transparent 1px),
+      linear-gradient(to bottom, color-mix(in oklab, var(--primary) 18%, transparent) 1px, transparent 1px);
+    background-size: 48px 48px;
+    mask-image: radial-gradient(ellipse 80% 60% at 50% 30%, black 30%, transparent 80%);
+  }
+
+  .animated-gradient {
+    background: linear-gradient(120deg, var(--indigo-glow), var(--purple-glow), var(--neon), var(--indigo-glow));
+    background-size: 300% 300%;
+    animation: gradientShift 8s ease infinite;
+  }
+
+  @keyframes gradientShift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-12px); }
+  }
+
+  .float-anim {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  @keyframes spinSlow {
+    to { transform: rotate(360deg); }
+  }
+
+  .spin-slow {
+    animation: spinSlow 14s linear infinite;
+  }
+
+  @keyframes pulseGlow {
+    0%, 100% { box-shadow: 0 0 20px var(--indigo-glow), 0 0 40px var(--purple-glow); }
+    50% { box-shadow: 0 0 40px var(--purple-glow), 0 0 70px var(--neon); }
+  }
+
+  .pulse-glow {
+    animation: pulseGlow 4s ease-in-out infinite;
+  }
+
+  .marquee {
+    display: flex;
+    animation: marquee 30s linear infinite;
+  }
+
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+}
