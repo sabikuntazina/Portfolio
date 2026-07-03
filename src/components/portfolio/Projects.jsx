@@ -2,11 +2,38 @@ import { ExternalLink, Github } from "lucide-react";
 import { SectionHeading, Reveal } from "./Section";
 import Image from "next/image";
 import Link from "next/link";
-import focusroom from "@/assets/focusroom.jpg";
+import focusroom from "@/assets/focusroom.png";
 import wanderlust from "@/assets/wanderlust.jpg";
-import lendora from "@/assets/lendora.jpg";
+import lendora from "@/assets/lendora.png";
+import lifeatlas from "@/assets/lifeatlas.png"
 
 const projects = [
+  {
+  name: "LifeAtlas",
+  image: lifeatlas,
+  desc: "LifeAtlas is a modern full-stack platform where users can create, organize, and share meaningful life lessons and personal growth experiences. Users can publish lessons publicly or privately, interact through likes and comments, save favorites, and access premium content through a secure subscription system. The platform also includes an admin dashboard for managing users, lessons, reports, featured content, and analytics.",
+  features: [
+    "Authentication",
+    "Role-based access",
+    "Premium subscription",
+    "Likes & comments",
+    "Favorites",
+    "Admin dashboard",
+    "Responsive UI"
+  ],
+  tech: [
+    "Next.js",
+    "React.js",
+    "Node.js",
+    "Express.js",
+    "MongoDB",
+    "JWT",
+    "Tailwind CSS",
+    "DaisyUI"
+  ],
+  githubLink: "https://github.com/sabikuntazina/LifeAtlas-client",
+  liveLink: "https://life-atlas-client.vercel.app/",
+},
   {
     name: "FocusRoom",
     image: focusroom,
@@ -24,15 +51,6 @@ const projects = [
     tech: ["React", "MongoDB", "Express.js"],
     githubLink: `https://github.com/sabikuntazina/Lendora-Online-Book-Borrowing-Platform`,
     liveLink: `https://lendora-online-book-borrowing-platf.vercel.app/`
-  },
-  {
-    name: "Wanderlust",
-    image: wanderlust,
-    desc: "A travel and destination exploration platform where users can browse destinations, discover places, and manage bookings with a modern UI experience.",
-    features: ["Travel booking", "Dynamic destinations", "Authentication", "User dashboard", "Responsive design"],
-    tech: ["React", "Express.js", "MongoDB", "Tailwind CSS"],
-    githubLink: `https://github.com/sabikuntazina/Wanderlust`,
-    liveLink: `wanderlust-client-blond.vercel.app`
   },
  
 ];
